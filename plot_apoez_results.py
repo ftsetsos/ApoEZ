@@ -102,7 +102,11 @@ def genotype_prevalence(df: pd.DataFrame) -> plt.Figure:
     for bar, n, p in zip(bars, counts, pct):
         ax.text(bar.get_x() + bar.get_width() / 2, bar.get_height(), f"{n:,}\n{p:.1f}%",
                 ha="center", va="bottom", fontsize=8)
-    ax.set(title="APOE genotype distribution", xlabel="APOE genotype", ylabel="Samples")
+    ax.set(
+        xlabel="APOE genotype",
+        ylabel="Samples"
+    )
+    ax.set_title("APOE genotype distribution", pad=24)
     ax.tick_params(axis="x", rotation=35)
     clean_axes(ax, "y")
     fig.tight_layout()
@@ -165,7 +169,11 @@ def score_by_genotype(df: pd.DataFrame) -> plt.Figure:
             median.set_linewidth(1.5)
         for i, group in enumerate(groups, 1):
             ax.text(i, ax.get_ylim()[1], f"n={len(group):,}", ha="center", va="bottom", fontsize=7)
-    ax.set(title="Overall magnitude by APOE genotype", xlabel="APOE genotype", ylabel="Overall magnitude score")
+    ax.set(
+        xlabel="APOE genotype",
+        ylabel="Overall magnitude score"
+    )
+    ax.set_title("Overall magnitude by APOE genotype", pad=24)
     ax.tick_params(axis="x", rotation=35)
     clean_axes(ax, "y")
     fig.tight_layout()
